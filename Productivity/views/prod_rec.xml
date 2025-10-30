@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- productivity records daily (date, employee, total_productivity, uom) -->
+
+
+<odoo>
+    <data>
+
+        <record id="views_productivity_search" model="ir.ui.view">
+            <field name="name">views.productivity.search</field>
+            <field name="model">x_productivity</field>
+            <field name="arch" type="xml">
+                <search string="Productivity Search">
+                    <filter string="This Month" name="filter_this_month"
+                            domain="[('date', '&gt;=', (context_today()).strftime('%%Y-%%m-01')),
+                                    ('date', '&lt;=', (context_today() + relativedelta(months=1, day=0)).strftime('%%Y-%%m-%%d'))]"/>
+                    <!-- Add other filters or fields here -->
+                </search>
+            </field>
+        </record>
+
+
+        <record id="views_productivity_list" model="ir.ui.view">
+            <field name="name">productivity.list</field>
+            <field name="model">x_productivity</field>
+            <field name="arch" type="xml">
+                <list string="Productivity Records">
+                    <field name="date"/>
+                    <field name="employee_id"/>
+                    <field name="job_position_id"/>
+                    <field name="total_productivity"/>
+                    <field name="uom"/>
+                    <!-- <field name="total_productivity_in_kg"/> -->
+                    <field name="total_kg"/>
+                </list>
+            </field>    
+        </record>
+
+        <record id="view_productivity_form" model="ir.ui.view">
+            <field name="name">productivity.form</field>
+            <field name="model">x_productivity</field>
+            <field name="arch" type="xml">
+                <form string="Productivity">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="date"/>
+                                <field name="employee_id"/>
+                                <!-- <field name="job_position_id"/> -->
+                            </group>
+                            <group>
+                                <field name="total_productivity"/>
+                                <field name="uom"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <!-- <chatter reload_on_follower="True"/> -->
+                </form>
+            </field>    
+        </record>
+
+
+        <record id="action_productivity" model="ir.actions.act_window">
+            <field name="name">Productivity</field>
+            <field name="res_model">x_productivity</field>
+            <field name="view_mode">list,form,pivot</field>
+            <field name="context">{'search_default_filter_this_month': 1}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new productivity record
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

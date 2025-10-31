@@ -7,5 +7,6 @@
   beserta file .py nya.
 - Maap saya kurang mengerti bagian "performance considerations for large datasets".
 
+Saya menyertakan productivity online dan offline dimana terdapat perbedaan penulisan variabel pada views .xml, untuk folder online, tinggal melakukan zip dan import pada Odoo Online, begitupun sebaliknya.
 
-terimakasih
+terimakasih, sehat selalu

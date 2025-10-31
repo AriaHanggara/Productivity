@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<odoo>
-    <menuitem id="productivity_menu" name="Productivity" />
-
-    <menuitem id="productivity_data_menu" name="Data" parent="productivity_menu" action="action_productivity"/>
-
-</odoo>
